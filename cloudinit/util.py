@@ -1299,6 +1299,7 @@ def unmounter(umount, lazy_support=True):
         yield umount
     finally:
         if umount:
+            # Some systems do not support lazy umount option.
             if lazy_support:
                 umount_cmd = ["umount", '-l', umount]
             else:
